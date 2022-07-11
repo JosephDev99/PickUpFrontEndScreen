@@ -1,8 +1,8 @@
-import { StyleSheet, Animated } from 'react-native';
-
-import { View } from './Themed';
-import LocationInput from './LocationInput';
+import { Animated, StyleSheet } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
+
+import LocationInput from './LocationInput';
+import { View } from './Themed';
 
 export default function EditScreenInfo(props: any) {
   const logoStyles = [styles.logoStyle];
@@ -35,12 +35,16 @@ export default function EditScreenInfo(props: any) {
           location={props.pickup}
           setLocation={props.setPickup}
           placeholder="Enter pickup location"
+          focusIn={() => props.focusIn(0)}
+          focusOut={() => props.focusOut(0)}
         />
         <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
         <LocationInput
           location={props.dropoff}
           setLocation={props.setDropoff}
           placeholder="Enter dropoff location"
+          focusIn={() => props.focusIn(1)}
+          focusOut={() => props.focusOut(1)}
         />
       </View>
     </View>
@@ -61,41 +65,6 @@ const styles = StyleSheet.create({
   arrowIcon: {
     color: '#404040',
   },
-  getStartedContainer: {
-    alignItems: 'center',
-    backgroundColor: 'white',
-    flexGrow: 1,
-    paddingEnd: 15,
-  },
-  homeScreenFilename: {
-    marginVertical: 7,
-  },
-  codeHighlightContainer: {
-    borderRadius: 3,
-    paddingHorizontal: 4,
-  },
-  getStartedText: {
-    fontSize: 17,
-    lineHeight: 24,
-    textAlign: 'center',
-  },
-  helpContainer: {
-    marginTop: 15,
-    marginHorizontal: 20,
-    alignItems: 'center',
-  },
-  helpLink: {
-    paddingVertical: 15,
-  },
-  helpLinkText: {
-    textAlign: 'center',
-  },
-  separator: {
-    marginVertical: 3,
-    height: 1,
-    width: '100%',
-    backgroundColor: '#f0f0f0',
-  },
   dotSeparator: {
     marginVertical: 3,
     width: 0,
@@ -111,5 +80,17 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: 'orange',
     backgroundColor: 'white',
+  },
+  getStartedContainer: {
+    alignItems: 'center',
+    backgroundColor: 'white',
+    flexGrow: 1,
+    paddingEnd: 15,
+  },
+  separator: {
+    marginVertical: 3,
+    height: 1,
+    width: '100%',
+    backgroundColor: '#f0f0f0',
   },
 });
